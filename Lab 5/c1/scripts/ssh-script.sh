@@ -13,7 +13,7 @@ tcpdump -i any -w /captures/capture.pcap &
 PID=$!
 
 echo "Tcpdump started with PID $PID."
-
+sleep 10
 # Attempt SSH connection
 echo "Attempting SSH connection..."
 sshpass -p 'test' ssh -o StrictHostKeyChecking=no test@$s1_ip

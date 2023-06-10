@@ -36,6 +36,6 @@ sleep 10
 s1_ip=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' s1)
 
 # Run the c1 container in the background with elevated privileges, pass s1_ip as an argument to ssh-script.sh, wait for 20 seconds, then stop it
-timeout 20 docker run --network=mynetwork --privileged -v "$(pwd)/captures:/captures" --name c1 my_custom_image_c1 /ssh-script.sh $s1_ip
+timeout 60 docker run --network=mynetwork --privileged -v "$(pwd)/captures:/captures" --name c1 my_custom_image_c1 /ssh-script.sh $s1_ip
 
 # The script ends here
