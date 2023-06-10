@@ -59,3 +59,21 @@ for client in ${clients[@]}; do
   # Copia el archivo capture.pcap del contenedor del cliente al host
   timeout 10 docker cp ${client}:./capture.pcap ./captura_${client}.pcap
 done
+
+# Espera 10 segundos
+sleep 10
+
+# Inicia tcpdump en el contenedor s1
+docker exec -d s1 /bin/bash -c 'tcpdump -U -i any -w ./capture.pcap >/dev/null 2>&1 &'
+
+# Espera 10 segundos
+sleep 10
+
+# Realiza una conexión SSH al propio contenedor s1
+docker exec -it s1 /bin/bash -c "sshpass -p 'test' ssh test@localhost"
+
+# Espera unos segundos para asegurar que tcpdump termina de capturar
+sleep 10
+
+# Copia el archivo capture.pcap del contenedor s1 al host
+timeout 10 docker cp s1:./capture.pcap ./captura_s1.pcap
