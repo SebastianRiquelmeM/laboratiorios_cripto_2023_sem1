@@ -1,0 +1,102 @@
+Ayudame, tengo el .pcap vacío y no sé por que. Necesito capturar los paquetes generados por c1 de la forma que sea.
+
+c1:
+
+Dockerfile:
+
+# Dockerfile
+FROM ubuntu:14.10
+RUN sed -i -re 's/([a-z]{2}\.)?archive.ubuntu.com|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
+RUN apt-get update && apt-get install -y openssh-client sshpass tcpdump
+ADD ./scripts/ssh-script.sh /ssh-script.sh
+RUN chmod +x /ssh-script.sh
+CMD ["/ssh-script.sh"]
+
+ssh-script.sh:
+
+#!/bin/bash
+# ssh-script.sh
+
+# The first argument is the IP address of the s1 container
+s1_ip=$1
+
+echo "Starting tcpdump..."
+
+# Start tcpdump capturing packets and send it to the background
+tcpdump -i any -w /captures/capture.pcap "port 22 and host $s1_ip" &
+
+# Get the PID of tcpdump
+PID=$!
+
+echo "Tcpdump started with PID $PID."
+
+# Attempt SSH connection
+echo "Attempting SSH connection..."
+sshpass -p 'test' ssh -o StrictHostKeyChecking=no test@$s1_ip
+
+echo "SSH connection attempted."
+
+# Kill tcpdump process and wait for it to finish writing the pcap file
+echo "Killing tcpdump..."
+kill $PID
+wait $PID
+
+echo "Tcpdump killed. Exiting script."
+
+
+s1:
+
+Dockerfile:
+
+# Dockerfile
+FROM ubuntu:20.10
+RUN sed -i -re 's/([a-z]{2}\.)?archive.ubuntu.com|security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
+RUN apt-get update && apt-get install -y openssh-server openssh-client sshpass
+RUN useradd -m test && echo 'test:test' | chpasswd
+RUN mkdir /var/run/sshd
+EXPOSE 22
+CMD ["/usr/sbin/sshd", "-D"]
+
+main.sh:
+
+#!/bin/bash
+set -x
+
+# Stop all running containers
+docker stop $(docker ps -aq)
+
+# Remove all containers
+docker rm $(docker ps -aq)
+
+# Remove all images
+docker rmi $(docker images -q)
+
+# Remove all networks
+docker network rm $(docker network ls -q)
+
+# Navigate to the s1 directory and build the image
+cd s1
+docker build -t my_image_s1 .
+
+cd ..
+
+# Navigate to the c1 directory and build the image
+cd c1
+docker build -t my_custom_image_c1 .
+
+# Create a network
+docker network create mynetwork
+
+# Run the s1 container in the background
+docker run --network=mynetwork -d --name s1 my_image_s1
+
+# Wait for a while to allow the s1 container to fully start
+sleep 10
+
+# Get the IP address of the s1 container
+s1_ip=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' s1)
+
+# Run the c1 container in the background, pass s1_ip as an argument to ssh-script.sh, wait for 20 seconds, then stop it
+timeout 20 docker run --network=mynetwork -v "$(pwd)/captures:/captures" --name c1 my_custom_image_c1 /ssh-script.sh $s1_ip
+
+# The script ends here
