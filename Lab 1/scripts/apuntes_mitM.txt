@@ -1,0 +1,43 @@
+Necesito que con un script de python leas la captura captura_ping_script.pcapng 
+que contiene un caracter en el final de la data de cada paquete ICMP, y entre todos
+forman la palabra "larycxpajorj h bnpdarmjm nw anmnb" Entonces, necesito que el script 
+lea esos paquetes, para formar esta palabra. Y la muestre como string por terminal.
+Para que tengas una referencia, los paquetes ICMP de esta captura fueron generados 
+con el siguiente script:  
+
+from scapy.all import *
+import sys
+import os
+
+# Obtener el mensaje a cifrar desde los argumentos de la línea de comandos
+mensaje = sys.argv[1]
+
+# Generar valores aleatorios para el ID de paquete y el número de secuencia de ICMP
+id_paquete = os.urandom(2)
+num_secuencia = 1
+
+# Enviar cada caracter del mensaje como un paquete ICMP de solicitud a la dirección IP de loopback
+for caracter in mensaje:
+    datos_aleatorios = os.urandom(44)
+    datos = datos_aleatorios + b'\x00' * (47 - len(datos_aleatorios)) + bytes(caracter, 'utf-8') + b'\x00'
+    paquete = IP(dst="127.0.0.1", id=int.from_bytes(id_paquete, byteorder='big'))/ICMP(id=1, seq=num_secuencia)/Raw(load=datos)
+    send(paquete)
+    num_secuencia += 1
+
+
+Ten en consideración que para todos los paquetes necesito extraer el byte de la misma posición.
+
+En el siguiente ejemplo el byte que necesito es 6c, la posición del caracter útil es la misma en todos:
+"\xff\xff\xff\xff\xff\xff\x00\x00\x00\x00\x00\x00\x08\x00\x45\x00" \
+"\x00\x4c\x96\x54\x00\x00\x40\x01\xe6\x5a\x7f\x00\x00\x01\x7f\x00" \
+"\x00\x01\x08\x00\x5c\x26\x00\x01\x00\x01\xba\xda\xab\xcb\x1f\x5f" \
+"\xc6\x47\x22\xf9\x12\x6b\x9e\xf9\xf9\xfc\x15\x6a\x28\xe8\x30\x97" \
+"\x1b\xf6\x38\xeb\x33\x79\x8b\xab\xab\x62\x48\xd6\x3f\x33\x80\xf9" \
+"\x4c\x61\x29\xf4\x67\x84\x6c\x00\x00\x00"  
+
+Cabe destacar que cada paquete tiene 48 bytes de data. 
+Y que el byte que necesito está en la posición 47 de cada paquete.
+
+Considera que pueden haber paquetes diferentes a ICMP en la captura.
+
+

@@ -1,0 +1,4 @@
+Ahora necesito que agregues una función que lea los archivos de la carpeta "./dics"
+que contiene archivos txt con con nombres la a la z incluyendo la ñ, por ejemplo: a.txt. 
+Cada archivo contiene una palabra por línea.
+La función debe leer cada archivo y agregar las palabras a una lista de palabras.

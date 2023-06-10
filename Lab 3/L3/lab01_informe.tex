@@ -1,0 +1,98 @@
+\documentclass[letter,12pt]{article}
+\usepackage[paperheight=27.94cm,paperwidth=21.59cm,bindingoffset=0in,left=3cm,right=2.0cm, top=3.5cm,bottom=2.5cm, headheight=200pt, headsep=1.0\baselineskip]{geometry}
+\usepackage{graphicx,lastpage}
+\usepackage{upgreek}
+\usepackage{censor}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{pdfpages}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{hyperref}
+
+\renewcommand{\tablename}{Tabla}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+
+%
+\begin{document}
+%
+   \title{\Huge{Informe Laboratorio 3}}
+
+   \author{\textbf{Sección x} \\  \\Alumno x \\ e-mail: alumno.contacto@mail.udp.cl}
+          
+   \date{Mayo de 2023}
+
+   \maketitle
+   
+   \tableofcontents
+ 
+  \newpage
+  
+
+\section{Descripción de actividades}
+Su informante quiere entregarle la contraseña de acceso a una red, pero desconfía de todo medio para entregársela (aún no llega al capítulo del curso en donde aprende a comunicar una password sin que nadie más la pueda interceptar).
+Por lo tanto, le entregará un archivo que contiene un desafío de autenticación, que al analizarlo, usted podrá obtener la contraseña que lo permite resolver.
+Como nadie puede ver a su informante (es informante y debe mantener el anonimato), él se comunicará con usted a través de la redes inalámbricas y de una forma que solo usted, como experto en informática y telecomunicaciones, logrará esclarecer.
+
+\begin{enumerate}
+    \item Identifique cual es la red inalámbrica que está utilizando su informante para enviarle información. Obtenga la contraseña de esa red utilizando el ataque por defecto de aircrack-ng, indicando el tiempo requerido para esto. Descifre el contenido transmitido sobre ella y descargue de Internet el archivo que su informante le ha comunicado a través de los paquetes que usted ha descifrado.
+    
+    \item Descargue el diccionario de RockyouLinks to an external site. (utilizado ampliamente en el mundo del pentesting). Haga un script que para cada string contenido en el diccionario, reemplace la primera letra por su letra en capital y agregue un cero al final de la password. 
+    
+    \item Todos los strings que comiencen con número toca eliminarlos del diccionario. Indique la cantidad de contraseñas que contiene el diccionario modificado debe llamarse rockyou\_mod.dic
+    A continuación un ejemplo de cómo se modifican las 10 primeras líneas del diccionario original.
+
+\end{enumerate}
+
+\section{Desarrollo (PASO 1)}
+
+\subsection{identificar en qué se destaca la red del informante del resto}
+
+\subsection{explica matemáticamente porqué se requieren más de 5000 paquetes para obtener la pass}
+
+\subsection{obtiene la password con ataque por defecto de aircrack-ng}
+
+
+\subsection{indica el tiempo que demoró en obtener la password}
+
+\subsection{descifra el contenido capturado}
+
+\subsection{describe como obtiene la url de donde descargar el archivo}
+
+
+\section{Desarrollo (PASO 2)}
+
+\subsection{indica script para modificar diccionario original}
+
+\subsection{cantidad de passwords finales que contiene rockyou\_mod.dic}
+
+\section{Desarrollo (Paso 3)}
+
+\subsection{obtiene contraseña con hashcat con potfile}
+
+\subsection{identifica nomenclatura del output}
+
+\subsection{obtiene contraseña con hashcat sin potfile}
+
+\subsection{identifica nomenclatura del output}
+
+\subsection{obtiene contraseña con aircrack-ng}
+
+\subsection{identifica y modifica parámetros solicitados por pycrack}
+
+\subsection{obtiene contraseña con pycrack}
+
+% Please add the following required packages to your document preamble:
+%\begin{table}[htbp]
+
+\section*{Conclusiones y comentarios}
+
+\end{document}

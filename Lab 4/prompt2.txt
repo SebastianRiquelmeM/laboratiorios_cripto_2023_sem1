@@ -1,0 +1,230 @@
+Necesito que edites el código:
+
+// ==UserScript==
+// @name        Cripto Laboratorio
+// @namespace   http://tampermonkey.net/
+// @version     0.1
+// @description Trabajo con cifrado
+// @author      You
+// @match       https://cripto.tiiny.site
+// @grant       none
+// @require     https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    // Parte 1: Obtener la llave
+    let parrafos = document.querySelectorAll('.Parrafo p');
+    let llave = Array.from(parrafos).map(p => p.innerText[0]).join('');
+    console.log("La llave es: " + llave);
+
+    // Parte 2: Identificar la cantidad de mensajes cifrados
+    let mensajesCifrados = document.querySelectorAll('div[id]');
+    console.log("Los mensajes cifrados son: " + mensajesCifrados.length);
+
+    // Parte 3: Obtener cada mensaje cifrado y descifrarlo
+    mensajesCifrados.forEach(mensajeCifrado => {
+        let mensajeCifradoBase64 = mensajeCifrado.id;
+        let mensajeCifradoBytes = CryptoJS.enc.Base64.parse(mensajeCifradoBase64);
+        let mensajeDescifradoBytes = CryptoJS.TripleDES.decrypt({ciphertext: mensajeCifradoBytes}, CryptoJS.enc.Utf8.parse(llave), {mode: CryptoJS.mode.ECB});
+        let mensajeDescifrado = mensajeDescifradoBytes.toString(CryptoJS.enc.Utf8);
+        console.log(mensajeCifradoBase64 + " " + mensajeDescifrado);
+        mensajeCifrado.innerText = mensajeDescifrado;
+    });
+})();
+
+
+
+Un informe del lab ya resuelto es:
+
+Informe Laboratorio 4
+Sección x
+Javier Ahumada Bustos
+e-mail: javierigna.ahumada@mail.udp.cl
+Mayo de 2023
+Índice
+1. Descripción de actividades 2
+2. Desarrollo (Parte 1)
+2.1. Detecta el cifrado utilizado por el informante . . . . . . . . . . . . . . .
+2.2. Logra que el script solo se gatille en el sitio usado por el informante . .
+2.3. Define función que obtiene automáticamente el password del documento
+2.4. Muestra la llave por consola . . . . . . . . . . . . . . . . . . . . . . . . .
+.
+.
+. 4
+4
+4
+5
+6
+3. Desarrollo (Parte 2)
+3.1. reconoce automáticamente la cantidad de mensajes cifrados . . . . . . . . . .
+3.2. muestra la cantidad de mensajes por consola . . . . . . . . . . . . . . . . . . 7
+7
+8
+4. Desarrollo (Parte 3)
+4.1. Importa la librerı́a cryptoJS . . . . . . . . . . . . . . . . . . . . . .
+4.2. Utiliza SRI en la librerı́a CryptoJS . . . . . . . . . . . . . . . . . .
+4.3. Logra decifrar uno de los mensajes . . . . . . . . . . . . . . . . . .
+4.4. Imprime todos los mensajes por consola . . . . . . . . . . . . . . . .
+4.5. Muestra los mensajes en texto plano en el sitio web . . . . . . . . .
+4.6. El script logra funcionar con otro texto y otra cantidad de mensajes
+4.7. Indica url al código .js implementado para su validación . . . . . . .
+1
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+8
+8
+8
+9
+9
+10
+10
+101 DESCRIPCIÓN DE ACTIVIDADES
+1.
+Descripción de actividades
+Para este laboratorio, deberá utilizar Tampermonkey y la librerı́a CryptoJS (con SRI)
+para lograr obtener los mensajes que le está comunicando su informante. En esta ocasión, su
+informante fue más osado y se comunicó con usted a través de un sitio web abierto a todo el
+público https://cripto.tiiny.site/.
+Sólo un ojo entrenado como el suyo logrará descifrar cuál es el algoritmo de cifrado
+utilizado y cuál es la contraseña utilizada para lograr obtener la información que está oculta.
+1. Desarrolle un plugin para tampermonkey que permita obtener la llave para el descifrado
+de los mensajes ocultos en la página web. La llave debe ser impresa por la consola de
+su navegador al momento de cargar el sitio web. Utilizar la siguiente estructura:
+La llave es: KEY
+2. En el mismo plugin, se debe detectar el patrón que permite identificar la cantidad
+de mensajes cifrados. Debe imprimir por la consola la cantidad de mensajes cifrados.
+Utilizar la siguiente estructura: Los mensajes cifrados son: NUMBER
+3. En el mismo plugin debe obtener cada mensaje cifrado y descifrarlo. Ambos mensajes
+deben ser informados por la consola (cifrado espacio descifrado) y además cada mensaje
+en texto plano debe ser impreso en la página web.
+El script desarrollado debe ser capaz de obtener toda la información del sitio web (llave,
+cantidad de mensajes, mensajes cifrados) sin ningún valor forzado. Para verificar el
+correcto funcionamiento de su script se utilizará un sitio web con otro texto y una
+cantidad distinta de mensajes cifrados. Deberá indicar la url donde se podrá descargar
+su script.
+Un ejemplo de lo que se debe visualizar en la consola, al ejecutar automáticamente el
+script, es lo siguiente:
+21 DESCRIPCIÓN DE ACTIVIDADES
+32 DESARROLLO (PARTE 1)
+2.
+2.1.
+Desarrollo (Parte 1)
+Detecta el cifrado utilizado por el informante
+Figura 1: Se encuentra un cifrado en cada contenedor div. Ademas la clave de cifrado esta
+en el enunciado concatenando la primera palabra de cada oracion: CRIPTOCRIPTOCRIP-
+TOCRIPTO
+2.2.
+Logra que el script solo se gatille en el sitio usado por el
+informante
+Figura 2: Este script solo se ejecuta si hace match con el dominio https://cripto.tiiny.site/
+42.3 Define función que obtiene automáticamente el password
+2 del
+DESARROLLO
+documento (PARTE 1)
+2.3.
+Define función que obtiene automáticamente el password del
+documento
+Figura 3: Script Parte 1
+52.4 Muestra la llave por consola
+2.4.
+2 DESARROLLO (PARTE 1)
+Muestra la llave por consola
+Figura 4: llave de cifrado CRIPTOCRIPTOCRIPTOCRIPTO de 24 bytes
+63 DESARROLLO (PARTE 2)
+3.
+3.1.
+Desarrollo (Parte 2)
+reconoce automáticamente la cantidad de mensajes cifrados
+Figura 5: Cada mensaje cifrado esta en un contenedor div de clase M, luego se buscan todos
+los contenedores con esas caracteristicas y se retorna el total
+73.2 muestra la cantidad de mensajes por consola
+3.2.
+4 DESARROLLO (PARTE 3)
+muestra la cantidad de mensajes por consola
+Figura 6: Mensajes por consola
+4.
+4.1.
+Desarrollo (Parte 3)
+Importa la librerı́a cryptoJS
+Figura 7: Como se importa CryptoJs a traves de un CDN no se necesita la sintaxis @require
+para importarla si no generando un elemento script
+4.2.
+Utiliza SRI en la librerı́a CryptoJS
+Figura 8: Con SRI se establecen propiedades adicionales para garantizar la integridad del
+archivo
+84.3 Logra decifrar uno de los mensajes
+4.3.
+4 DESARROLLO (PARTE 3)
+Logra decifrar uno de los mensajes
+Figura 9: Primer mensaje descifrado.
+4.4.
+Imprime todos los mensajes por consola
+Figura 10: Mensajes cifrados.
+94.5 Muestra los mensajes en texto plano en el sitio web
+4.5.
+4 DESARROLLO (PARTE 3)
+Muestra los mensajes en texto plano en el sitio web
+Figura 11: Resultado Parte 3
+4.6.
+El script logra funcionar con otro texto y otra cantidad de
+mensajes
+En teoria debe funcionar porque se busca en la seccion body del HTML los div de clase
+Parrafo y Mn, donde n es la cantidad de mensajes.
+4.7.
+Indica url al código .js implementado para su validación
+https://github.com/jxvierpo/Tampermonkey-cryptojs.git
+Conclusiones y comentarios
+El SRI permite verificar la integridad del recurso descargado comparando su hash crip-
+tográfico con un valor de integridad conocido. Esto ayuda a prevenir ataques en los que un
+tercero malintencionado puede interceptar o modificar el recurso en tránsito, lo que podrı́a
+conducir a problemas de seguridad o funcionalidad en tu sitio o aplicación. El navegador
+verifica automáticamente que el recurso descargado coincida con ese hash antes de ejecutar
+o aplicar el recurso.
+Finalmente la dificultad fue trabajar en tampermonkey, en cuanto al manejo de variables.
+Por ejemplo, la clave de cifrado calculada habia que pasarla al mismo formato que el ID
+extraido para que la libreria de CryptoJs funcionara. Ese detalle ChatGPT no lo pudo resolver
+si no la experiencia obtenida en los ramos informaticos.
+10

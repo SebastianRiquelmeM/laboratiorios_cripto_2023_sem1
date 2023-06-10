@@ -1,0 +1,554 @@
+No.     Time           Source                Destination           Protocol Length Info
+      1 0.000000       ee:de:67:8c:df:8b     Tp-LinkT_d2:dc:18     802.11   123    Association Request, SN=2292, FN=0, Flags=........, SSID="VTR-1645213"
+
+Frame 1: 123 bytes on wire (984 bits), 123 bytes captured (984 bits)
+    Encapsulation type: IEEE 802.11 Wireless LAN (20)
+    Arrival Time: Oct 12, 2022 18:29:57.968873000 -03
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1665610197.968873000 seconds
+    [Time delta from previous captured frame: 0.000000000 seconds]
+    [Time delta from previous displayed frame: 0.000000000 seconds]
+    [Time since reference or first frame: 0.000000000 seconds]
+    Frame Number: 1
+    Frame Length: 123 bytes (984 bits)
+    Capture Length: 123 bytes (984 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: wlan]
+IEEE 802.11 Association Request, Flags: ........
+    Type/Subtype: Association Request (0x0000)
+    Frame Control Field: 0x0000
+    .000 0001 0011 1010 = Duration: 314 microseconds
+    Receiver address: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    Destination address: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    Transmitter address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+    Source address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+    BSS Id: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    .... .... .... 0000 = Fragment number: 0
+    1000 1111 0100 .... = Sequence number: 2292
+IEEE 802.11 Wireless Management
+    Fixed parameters (4 bytes)
+        Capabilities Information: 0x0431
+        Listen Interval: 0x0001
+    Tagged parameters (95 bytes)
+        Tag: SSID parameter set: "VTR-1645213"
+            Tag Number: SSID parameter set (0)
+            Tag length: 11
+            SSID: "VTR-1645213"
+        Tag: Supported Rates 1(B), 2(B), 5.5(B), 11(B), 6, 9, 12, 18, [Mbit/sec]
+            Tag Number: Supported Rates (1)
+            Tag length: 8
+            Supported Rates: 1(B) (0x82)
+            Supported Rates: 2(B) (0x84)
+            Supported Rates: 5.5(B) (0x8b)
+            Supported Rates: 11(B) (0x96)
+            Supported Rates: 6 (0x0c)
+            Supported Rates: 9 (0x12)
+            Supported Rates: 12 (0x18)
+            Supported Rates: 18 (0x24)
+        Tag: RSN Information
+            Tag Number: RSN Information (48)
+            Tag length: 20
+            RSN Version: 1
+            Group Cipher Suite: 00:0f:ac (Ieee 802.11) AES (CCM)
+            Pairwise Cipher Suite Count: 1
+            Pairwise Cipher Suite List 00:0f:ac (Ieee 802.11) AES (CCM)
+            Auth Key Management (AKM) Suite Count: 1
+            Auth Key Management (AKM) List 00:0f:ac (Ieee 802.11) PSK
+            RSN Capabilities: 0x0000
+        Tag: Extended Supported Rates 24, 36, 48, 54, [Mbit/sec]
+            Tag Number: Extended Supported Rates (50)
+            Tag length: 4
+            Extended Supported Rates: 24 (0x30)
+            Extended Supported Rates: 36 (0x48)
+            Extended Supported Rates: 48 (0x60)
+            Extended Supported Rates: 54 (0x6c)
+        Tag: Supported Operating Classes
+            Tag Number: Supported Operating Classes (59)
+            Tag length: 16
+            Current Operating Class: 81
+            Alternate Operating Classes: 81, 83, 84, 115, 116, 117, 118, 119, 120, 124, 125, 126, 127, 128
+        Tag: Extended Capabilities (5 octets)
+            Tag Number: Extended Capabilities (127)
+            Tag length: 5
+            Extended Capabilities: 0x04 (octet 1)
+            Extended Capabilities: 0x00 (octet 2)
+            Extended Capabilities: 0x00 (octet 3)
+            Extended Capabilities: 0x00 (octet 4)
+            Extended Capabilities: 0x01 (octet 5)
+        Tag: Vendor Specific: Microsoft Corp.: WMM/WME: Information Element
+            Tag Number: Vendor Specific (221)
+            Tag length: 7
+            OUI: 00:50:f2 (Microsoft Corp.)
+            Vendor Specific OUI Type: 2
+            Type: WMM/WME (0x02)
+            WME Subtype: Information Element (0)
+            WME Version: 1
+            WME QoS Info: 0x00
+        Tag: Vendor Specific: Qualcomm Inc.
+            Tag Number: Vendor Specific (221)
+            Tag length: 8
+            OUI: 8c:fd:f0 (Qualcomm Inc.)
+            Vendor Specific OUI Type: 1
+            Vendor Specific Data: 0101020100
+
+No.     Time           Source                Destination           Protocol Length Info
+      2 0.000002                             ee:de:67:8c:df:8b (ee:de:67:8c:df:8b) (RA) 802.11   10     Acknowledgement, Flags=........
+
+Frame 2: 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+    Encapsulation type: IEEE 802.11 Wireless LAN (20)
+    Arrival Time: Oct 12, 2022 18:29:57.968875000 -03
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1665610197.968875000 seconds
+    [Time delta from previous captured frame: 0.000002000 seconds]
+    [Time delta from previous displayed frame: 0.000002000 seconds]
+    [Time since reference or first frame: 0.000002000 seconds]
+    Frame Number: 2
+    Frame Length: 10 bytes (80 bits)
+    Capture Length: 10 bytes (80 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: wlan]
+IEEE 802.11 Acknowledgement, Flags: ........
+    Type/Subtype: Acknowledgement (0x001d)
+    Frame Control Field: 0xd400
+    .000 0000 0000 0000 = Duration: 0 microseconds
+    Receiver address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+
+No.     Time           Source                Destination           Protocol Length Info
+      3 0.002401       Tp-LinkT_d2:dc:18     ee:de:67:8c:df:8b     802.11   102    Association Response, SN=1184, FN=0, Flags=........
+
+Frame 3: 102 bytes on wire (816 bits), 102 bytes captured (816 bits)
+    Encapsulation type: IEEE 802.11 Wireless LAN (20)
+    Arrival Time: Oct 12, 2022 18:29:57.971274000 -03
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1665610197.971274000 seconds
+    [Time delta from previous captured frame: 0.002399000 seconds]
+    [Time delta from previous displayed frame: 0.002399000 seconds]
+    [Time since reference or first frame: 0.002401000 seconds]
+    Frame Number: 3
+    Frame Length: 102 bytes (816 bits)
+    Capture Length: 102 bytes (816 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: wlan]
+IEEE 802.11 Association Response, Flags: ........
+    Type/Subtype: Association Response (0x0001)
+    Frame Control Field: 0x1000
+    .000 0001 0100 0000 = Duration: 320 microseconds
+    Receiver address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+    Destination address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+    Transmitter address: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    Source address: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    BSS Id: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    .... .... .... 0000 = Fragment number: 0
+    0100 1010 0000 .... = Sequence number: 1184
+IEEE 802.11 Wireless Management
+    Fixed parameters (6 bytes)
+        Capabilities Information: 0x0431
+        Status code: Successful (0x0000)
+        ..00 0000 0000 0001 = Association ID: 0x0001
+    Tagged parameters (72 bytes)
+        Tag: Supported Rates 1(B), 2(B), 5.5(B), 11(B), 6, 9, 12, 18, [Mbit/sec]
+            Tag Number: Supported Rates (1)
+            Tag length: 8
+            Supported Rates: 1(B) (0x82)
+            Supported Rates: 2(B) (0x84)
+            Supported Rates: 5.5(B) (0x8b)
+            Supported Rates: 11(B) (0x96)
+            Supported Rates: 6 (0x0c)
+            Supported Rates: 9 (0x12)
+            Supported Rates: 12 (0x18)
+            Supported Rates: 18 (0x24)
+        Tag: Extended Supported Rates 24, 36, 48, 54, [Mbit/sec]
+            Tag Number: Extended Supported Rates (50)
+            Tag length: 4
+            Extended Supported Rates: 24 (0x30)
+            Extended Supported Rates: 36 (0x48)
+            Extended Supported Rates: 48 (0x60)
+            Extended Supported Rates: 54 (0x6c)
+        Tag: Extended Capabilities (8 octets)
+            Tag Number: Extended Capabilities (127)
+            Tag length: 8
+            Extended Capabilities: 0x04 (octet 1)
+            Extended Capabilities: 0x00 (octet 2)
+            Extended Capabilities: 0x00 (octet 3)
+            Extended Capabilities: 0x00 (octet 4)
+            Extended Capabilities: 0x01 (octet 5)
+            Extended Capabilities: 0x00 (octet 6)
+            Extended Capabilities: 0x01 (octet 7)
+            Extended Capabilities: 0x40 (octet 8)
+        Tag: QoS Map Set
+            Tag Number: QoS Map Set (110)
+            Tag length: 18
+            DSCP Exception: 0x0000 (0x00: UP 0)
+            DSCP Range description: 0x0210 (0x02-0x10: UP 0)
+            DSCP Range description: 0x0101 (0x01-0x01: UP 1)
+            DSCP Range description: 0xffff (UP 2 not in use)
+            DSCP Range description: 0x1216 (0x12-0x16: UP 3)
+            DSCP Range description: 0x1826 (0x18-0x26: UP 4)
+            DSCP Range description: 0x2828 (0x28-0x28: UP 5)
+            DSCP Range description: 0x2c2e (0x2c-0x2e: UP 6)
+            DSCP Range description: 0x3038 (0x30-0x38: UP 7)
+        Tag: Vendor Specific: Microsoft Corp.: WMM/WME: Parameter Element
+            Tag Number: Vendor Specific (221)
+            Tag length: 24
+            OUI: 00:50:f2 (Microsoft Corp.)
+            Vendor Specific OUI Type: 2
+            Type: WMM/WME (0x02)
+            WME Subtype: Parameter Element (1)
+            WME Version: 1
+            WME QoS Info: 0x81
+            Reserved: 00
+            Ac Parameters ACI 0 (Best Effort), ACM no, AIFSN 3, ECWmin/max 4/10 (CWmin/max 15/1023), TXOP 0
+            Ac Parameters ACI 1 (Background), ACM no, AIFSN 7, ECWmin/max 4/10 (CWmin/max 15/1023), TXOP 0
+            Ac Parameters ACI 2 (Video), ACM no, AIFSN 2, ECWmin/max 3/4 (CWmin/max 7/15), TXOP 94
+            Ac Parameters ACI 3 (Voice), ACM no, AIFSN 2, ECWmin/max 2/3 (CWmin/max 3/7), TXOP 47
+
+No.     Time           Source                Destination           Protocol Length Info
+      4 0.002402                             Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18) (RA) 802.11   10     Acknowledgement, Flags=........
+
+Frame 4: 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+    Encapsulation type: IEEE 802.11 Wireless LAN (20)
+    Arrival Time: Oct 12, 2022 18:29:57.971275000 -03
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1665610197.971275000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.002402000 seconds]
+    Frame Number: 4
+    Frame Length: 10 bytes (80 bits)
+    Capture Length: 10 bytes (80 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: wlan]
+IEEE 802.11 Acknowledgement, Flags: ........
+    Type/Subtype: Acknowledgement (0x001d)
+    Frame Control Field: 0xd400
+    .000 0000 0000 0110 = Duration: 6 microseconds
+    Receiver address: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+
+No.     Time           Source                Destination           Protocol Length Info
+      5 0.007381       Tp-LinkT_d2:dc:18     ee:de:67:8c:df:8b     EAPOL    133    Key (Message 1 of 4)
+
+Frame 5: 133 bytes on wire (1064 bits), 133 bytes captured (1064 bits)
+    Encapsulation type: IEEE 802.11 Wireless LAN (20)
+    Arrival Time: Oct 12, 2022 18:29:57.976254000 -03
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1665610197.976254000 seconds
+    [Time delta from previous captured frame: 0.004979000 seconds]
+    [Time delta from previous displayed frame: 0.004979000 seconds]
+    [Time since reference or first frame: 0.007381000 seconds]
+    Frame Number: 5
+    Frame Length: 133 bytes (1064 bits)
+    Capture Length: 133 bytes (1064 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: wlan:llc:eapol]
+IEEE 802.11 QoS Data, Flags: ......F.
+    Type/Subtype: QoS Data (0x0028)
+    Frame Control Field: 0x8802
+    .000 0001 0100 0000 = Duration: 320 microseconds
+    Receiver address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+    Transmitter address: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    Destination address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+    Source address: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    BSS Id: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    STA address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+    .... .... .... 0000 = Fragment number: 0
+    0000 0000 0000 .... = Sequence number: 0
+    Qos Control: 0x0007
+Logical-Link Control
+    DSAP: SNAP (0xaa)
+    SSAP: SNAP (0xaa)
+    Control field: U, func=UI (0x03)
+    Organization Code: 00:00:00 (Officially Xerox, but
+    Type: 802.1X Authentication (0x888e)
+802.1X Authentication
+    Version: 802.1X-2004 (2)
+    Type: Key (3)
+    Length: 95
+    Key Descriptor Type: EAPOL RSN Key (2)
+    [Message number: 1]
+    Key Information: 0x008a
+    Key Length: 16
+    Replay Counter: 1
+    WPA Key Nonce: 4c2fb7eca28fba45accefde3ac5e433314270e04355b6d95086031b004a31935
+    Key IV: 00000000000000000000000000000000
+    WPA Key RSC: 0000000000000000
+    WPA Key ID: 0000000000000000
+    WPA Key MIC: 00000000000000000000000000000000
+    WPA Key Data Length: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+      6 0.009336                             Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18) (RA) 802.11   10     Acknowledgement, Flags=........
+
+Frame 6: 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+    Encapsulation type: IEEE 802.11 Wireless LAN (20)
+    Arrival Time: Oct 12, 2022 18:29:57.978209000 -03
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1665610197.978209000 seconds
+    [Time delta from previous captured frame: 0.001955000 seconds]
+    [Time delta from previous displayed frame: 0.001955000 seconds]
+    [Time since reference or first frame: 0.009336000 seconds]
+    Frame Number: 6
+    Frame Length: 10 bytes (80 bits)
+    Capture Length: 10 bytes (80 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: wlan]
+IEEE 802.11 Acknowledgement, Flags: ........
+    Type/Subtype: Acknowledgement (0x001d)
+    Frame Control Field: 0xd400
+    .000 0000 0000 0110 = Duration: 6 microseconds
+    Receiver address: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+
+No.     Time           Source                Destination           Protocol Length Info
+      7 0.017080       ee:de:67:8c:df:8b     Tp-LinkT_d2:dc:18     EAPOL    155    Key (Message 2 of 4)
+
+Frame 7: 155 bytes on wire (1240 bits), 155 bytes captured (1240 bits)
+    Encapsulation type: IEEE 802.11 Wireless LAN (20)
+    Arrival Time: Oct 12, 2022 18:29:57.985953000 -03
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1665610197.985953000 seconds
+    [Time delta from previous captured frame: 0.007744000 seconds]
+    [Time delta from previous displayed frame: 0.007744000 seconds]
+    [Time since reference or first frame: 0.017080000 seconds]
+    Frame Number: 7
+    Frame Length: 155 bytes (1240 bits)
+    Capture Length: 155 bytes (1240 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: wlan:llc:eapol]
+IEEE 802.11 QoS Data, Flags: .......T
+    Type/Subtype: QoS Data (0x0028)
+    Frame Control Field: 0x8801
+    .000 0001 0011 1010 = Duration: 314 microseconds
+    Receiver address: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    Transmitter address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+    Destination address: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    Source address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+    BSS Id: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    STA address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+    .... .... .... 0000 = Fragment number: 0
+    0000 0000 0000 .... = Sequence number: 0
+    Qos Control: 0x0006
+Logical-Link Control
+    DSAP: SNAP (0xaa)
+    SSAP: SNAP (0xaa)
+    Control field: U, func=UI (0x03)
+    Organization Code: 00:00:00 (Officially Xerox, but
+    Type: 802.1X Authentication (0x888e)
+802.1X Authentication
+    Version: 802.1X-2001 (1)
+    Type: Key (3)
+    Length: 117
+    Key Descriptor Type: EAPOL RSN Key (2)
+    [Message number: 2]
+    Key Information: 0x010a
+    Key Length: 0
+    Replay Counter: 1
+    WPA Key Nonce: 30bde6b043c2aff8ea482dee7d788e95b634e3f8e3d73c038f5869b96bbe9cdc
+    Key IV: 00000000000000000000000000000000
+    WPA Key RSC: 0000000000000000
+    WPA Key ID: 0000000000000000
+    WPA Key MIC: 1813acb976741b446d43369fb96dbf90
+    WPA Key Data Length: 22
+    WPA Key Data: 30140100000fac040100000fac040100000fac020000
+
+No.     Time           Source                Destination           Protocol Length Info
+      8 0.017082                             ee:de:67:8c:df:8b (ee:de:67:8c:df:8b) (RA) 802.11   10     Acknowledgement, Flags=........
+
+Frame 8: 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+    Encapsulation type: IEEE 802.11 Wireless LAN (20)
+    Arrival Time: Oct 12, 2022 18:29:57.985955000 -03
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1665610197.985955000 seconds
+    [Time delta from previous captured frame: 0.000002000 seconds]
+    [Time delta from previous displayed frame: 0.000002000 seconds]
+    [Time since reference or first frame: 0.017082000 seconds]
+    Frame Number: 8
+    Frame Length: 10 bytes (80 bits)
+    Capture Length: 10 bytes (80 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: wlan]
+IEEE 802.11 Acknowledgement, Flags: ........
+    Type/Subtype: Acknowledgement (0x001d)
+    Frame Control Field: 0xd400
+    .000 0000 0000 0000 = Duration: 0 microseconds
+    Receiver address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+
+No.     Time           Source                Destination           Protocol Length Info
+      9 0.017087                             ee:de:67:8c:df:8b (ee:de:67:8c:df:8b) (RA) 802.11   10     Clear-to-send, Flags=........
+
+Frame 9: 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+    Encapsulation type: IEEE 802.11 Wireless LAN (20)
+    Arrival Time: Oct 12, 2022 18:29:57.985960000 -03
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1665610197.985960000 seconds
+    [Time delta from previous captured frame: 0.000005000 seconds]
+    [Time delta from previous displayed frame: 0.000005000 seconds]
+    [Time since reference or first frame: 0.017087000 seconds]
+    Frame Number: 9
+    Frame Length: 10 bytes (80 bits)
+    Capture Length: 10 bytes (80 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: wlan]
+IEEE 802.11 Clear-to-send, Flags: ........
+    Type/Subtype: Clear-to-send (0x001c)
+    Frame Control Field: 0xc400
+    .111 0101 0011 0000 = Duration: 30000 microseconds
+    Receiver address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+
+No.     Time           Source                Destination           Protocol Length Info
+     10 0.050774       Tp-LinkT_d2:dc:18     ee:de:67:8c:df:8b     EAPOL    189    Key (Message 3 of 4)
+
+Frame 10: 189 bytes on wire (1512 bits), 189 bytes captured (1512 bits)
+    Encapsulation type: IEEE 802.11 Wireless LAN (20)
+    Arrival Time: Oct 12, 2022 18:29:58.019647000 -03
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1665610198.019647000 seconds
+    [Time delta from previous captured frame: 0.033687000 seconds]
+    [Time delta from previous displayed frame: 0.033687000 seconds]
+    [Time since reference or first frame: 0.050774000 seconds]
+    Frame Number: 10
+    Frame Length: 189 bytes (1512 bits)
+    Capture Length: 189 bytes (1512 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: wlan:llc:eapol]
+IEEE 802.11 QoS Data, Flags: ......F.
+    Type/Subtype: QoS Data (0x0028)
+    Frame Control Field: 0x8802
+    .000 0001 0100 0000 = Duration: 320 microseconds
+    Receiver address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+    Transmitter address: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    Destination address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+    Source address: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    BSS Id: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    STA address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+    .... .... .... 0000 = Fragment number: 0
+    0000 0000 0001 .... = Sequence number: 1
+    Qos Control: 0x0007
+Logical-Link Control
+    DSAP: SNAP (0xaa)
+    SSAP: SNAP (0xaa)
+    Control field: U, func=UI (0x03)
+    Organization Code: 00:00:00 (Officially Xerox, but
+    Type: 802.1X Authentication (0x888e)
+802.1X Authentication
+    Version: 802.1X-2004 (2)
+    Type: Key (3)
+    Length: 151
+    Key Descriptor Type: EAPOL RSN Key (2)
+    [Message number: 3]
+    Key Information: 0x13ca
+    Key Length: 16
+    Replay Counter: 2
+    WPA Key Nonce: 4c2fb7eca28fba45accefde3ac5e433314270e04355b6d95086031b004a31935
+    Key IV: 00000000000000000000000000000000
+    WPA Key RSC: cd00000000000000
+    WPA Key ID: 0000000000000000
+    WPA Key MIC: a349d01089960aa9f94b5857b0ea10c6
+    WPA Key Data Length: 56
+    WPA Key Data: db0eb43c3faf2c0e8b7e8a471f962c307e707e4718be724459167a88fa281f4d7ce38f01…
+
+No.     Time           Source                Destination           Protocol Length Info
+     11 0.050776                             Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18) (RA) 802.11   10     Acknowledgement, Flags=........
+
+Frame 11: 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+    Encapsulation type: IEEE 802.11 Wireless LAN (20)
+    Arrival Time: Oct 12, 2022 18:29:58.019649000 -03
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1665610198.019649000 seconds
+    [Time delta from previous captured frame: 0.000002000 seconds]
+    [Time delta from previous displayed frame: 0.000002000 seconds]
+    [Time since reference or first frame: 0.050776000 seconds]
+    Frame Number: 11
+    Frame Length: 10 bytes (80 bits)
+    Capture Length: 10 bytes (80 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: wlan]
+IEEE 802.11 Acknowledgement, Flags: ........
+    Type/Subtype: Acknowledgement (0x001d)
+    Frame Control Field: 0xd400
+    .000 0000 0000 0110 = Duration: 6 microseconds
+    Receiver address: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+
+No.     Time           Source                Destination           Protocol Length Info
+     12 0.054559       ee:de:67:8c:df:8b     Tp-LinkT_d2:dc:18     EAPOL    133    Key (Message 4 of 4)
+
+Frame 12: 133 bytes on wire (1064 bits), 133 bytes captured (1064 bits)
+    Encapsulation type: IEEE 802.11 Wireless LAN (20)
+    Arrival Time: Oct 12, 2022 18:29:58.023432000 -03
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1665610198.023432000 seconds
+    [Time delta from previous captured frame: 0.003783000 seconds]
+    [Time delta from previous displayed frame: 0.003783000 seconds]
+    [Time since reference or first frame: 0.054559000 seconds]
+    Frame Number: 12
+    Frame Length: 133 bytes (1064 bits)
+    Capture Length: 133 bytes (1064 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: wlan:llc:eapol]
+IEEE 802.11 QoS Data, Flags: .......T
+    Type/Subtype: QoS Data (0x0028)
+    Frame Control Field: 0x8801
+    .000 0001 0011 1010 = Duration: 314 microseconds
+    Receiver address: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    Transmitter address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+    Destination address: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    Source address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+    BSS Id: Tp-LinkT_d2:dc:18 (b0:48:7a:d2:dc:18)
+    STA address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)
+    .... .... .... 0000 = Fragment number: 0
+    0000 0000 0001 .... = Sequence number: 1
+    Qos Control: 0x0006
+Logical-Link Control
+    DSAP: SNAP (0xaa)
+    SSAP: SNAP (0xaa)
+    Control field: U, func=UI (0x03)
+    Organization Code: 00:00:00 (Officially Xerox, but
+    Type: 802.1X Authentication (0x888e)
+802.1X Authentication
+    Version: 802.1X-2001 (1)
+    Type: Key (3)
+    Length: 95
+    Key Descriptor Type: EAPOL RSN Key (2)
+    [Message number: 4]
+    Key Information: 0x030a
+    Key Length: 0
+    Replay Counter: 2
+    WPA Key Nonce: 0000000000000000000000000000000000000000000000000000000000000000
+    Key IV: 00000000000000000000000000000000
+    WPA Key RSC: 0000000000000000
+    WPA Key ID: 0000000000000000
+    WPA Key MIC: 5cf0d63af458f13a83daa686df1f4067
+    WPA Key Data Length: 0
+
+No.     Time           Source                Destination           Protocol Length Info
+     13 0.054560                             ee:de:67:8c:df:8b (ee:de:67:8c:df:8b) (RA) 802.11   10     Acknowledgement, Flags=........
+
+Frame 13: 10 bytes on wire (80 bits), 10 bytes captured (80 bits)
+    Encapsulation type: IEEE 802.11 Wireless LAN (20)
+    Arrival Time: Oct 12, 2022 18:29:58.023433000 -03
+    [Time shift for this packet: 0.000000000 seconds]
+    Epoch Time: 1665610198.023433000 seconds
+    [Time delta from previous captured frame: 0.000001000 seconds]
+    [Time delta from previous displayed frame: 0.000001000 seconds]
+    [Time since reference or first frame: 0.054560000 seconds]
+    Frame Number: 13
+    Frame Length: 10 bytes (80 bits)
+    Capture Length: 10 bytes (80 bits)
+    [Frame is marked: False]
+    [Frame is ignored: False]
+    [Protocols in frame: wlan]
+IEEE 802.11 Acknowledgement, Flags: ........
+    Type/Subtype: Acknowledgement (0x001d)
+    Frame Control Field: 0xd400
+    .000 0000 0000 0000 = Duration: 0 microseconds
+    Receiver address: ee:de:67:8c:df:8b (ee:de:67:8c:df:8b)

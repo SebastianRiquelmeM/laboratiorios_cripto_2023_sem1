@@ -1,0 +1,195 @@
+Necesito que me ayudes con un laboratorio de criptografía y seguridad en redes. Las instrucciones son las siguientes:
+
+Para este laboratorio, deberá utilizar Tampermonkey y la librería CryptoJS (con SRI) para lograr obtener los mensajes que le está comunicando su informante. En esta ocasión, su informante fue más osado y se comunicó con usted a través de un sitio web abierto a todo el público https://cripto.tiiny.site to an external site.
+Sólo un ojo entrenado como el suyo logrará descifrar cuál es el algoritmo de cifrado utilizado y cuál es la contraseña utilizada para lograr obtener la información que está oculta.
+
+Parte1
+
+Desarrolle un plugin para tampermonkey que permita obtener la llave para el descifrado de los mensajes ocultos en la página web. La llave debe ser impresa por la consola de su navegador al momento de cargar el sitio web. Utilizar la siguiente estructura:
+La llave es: KEY
+
+Parte2
+
+En el mismo plugin, se debe detectar el patrón que permite identificar la cantidad de mensajes cifrados. Debe imprimir por la consola la cantidad de mensajes cifrados. Utilizar la siguiente estructura:
+Los mensajes cifrados son: NUMBER
+
+Parte3
+
+En el mismo plugin debe obtener cada mensaje cifrado y descifrarlo. Ambos mensajes deben ser informados por la consola (cifrado espacio descifrado) y además cada mensaje en texto plano debe ser impreso en la página web. 
+
+El script desarrollado debe ser capaz de obtener toda la información del sitio web (llave, cantidad de mensajes, mensajes cifrados) sin ningún valor forzado. Para verificar el correcto funcionamiento de su script se utilizará un sitio web con otro texto y una cantidad distinta de mensajes cifrados. Deberá indicar la url donde se podrá descargar su script.
+
+El HTML de https://cripto.tiiny.site es:
+
+<html data-darkreader-mode="dynamic" data-darkreader-scheme="dark"><head><style class="darkreader darkreader--fallback" media="screen"></style><style class="darkreader darkreader--text" media="screen"></style><style class="darkreader darkreader--invert" media="screen">.jfk-bubble.gtx-bubble, .captcheck_answer_label > input + img, span#closed_text > img[src^="https://www.gstatic.com/images/branding/googlelogo"], span[data-href^="https://www.hcaptcha.com/"] > #icon, #bit-notification-bar-iframe, ::-webkit-calendar-picker-indicator {
+    filter: invert(100%) hue-rotate(180deg) contrast(90%) !important;
+}</style><style class="darkreader darkreader--inline" media="screen">[data-darkreader-inline-bgcolor] {
+  background-color: var(--darkreader-inline-bgcolor) !important;
+}
+[data-darkreader-inline-bgimage] {
+  background-image: var(--darkreader-inline-bgimage) !important;
+}
+[data-darkreader-inline-border] {
+  border-color: var(--darkreader-inline-border) !important;
+}
+[data-darkreader-inline-border-bottom] {
+  border-bottom-color: var(--darkreader-inline-border-bottom) !important;
+}
+[data-darkreader-inline-border-left] {
+  border-left-color: var(--darkreader-inline-border-left) !important;
+}
+[data-darkreader-inline-border-right] {
+  border-right-color: var(--darkreader-inline-border-right) !important;
+}
+[data-darkreader-inline-border-top] {
+  border-top-color: var(--darkreader-inline-border-top) !important;
+}
+[data-darkreader-inline-boxshadow] {
+  box-shadow: var(--darkreader-inline-boxshadow) !important;
+}
+[data-darkreader-inline-color] {
+  color: var(--darkreader-inline-color) !important;
+}
+[data-darkreader-inline-fill] {
+  fill: var(--darkreader-inline-fill) !important;
+}
+[data-darkreader-inline-stroke] {
+  stroke: var(--darkreader-inline-stroke) !important;
+}
+[data-darkreader-inline-outline] {
+  outline-color: var(--darkreader-inline-outline) !important;
+}
+[data-darkreader-inline-stopcolor] {
+  stop-color: var(--darkreader-inline-stopcolor) !important;
+}</style><style class="darkreader darkreader--variables" media="screen">:root {
+   --darkreader-neutral-background: #131516;
+   --darkreader-neutral-text: #d8d4cf;
+   --darkreader-selection-background: #004daa;
+   --darkreader-selection-text: #e8e6e3;
+}</style><style class="darkreader darkreader--root-vars" media="screen"></style><style class="darkreader darkreader--user-agent" media="screen">html {
+    background-color: #181a1b !important;
+}
+html {
+    color-scheme: dark !important;
+}
+html, body {
+    background-color: #181a1b;
+}
+html, body {
+    border-color: #736b5e;
+    color: #e8e6e3;
+}
+a {
+    color: #3391ff;
+}
+table {
+    border-color: #545b5e;
+}
+::placeholder {
+    color: #b2aba1;
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+    background-color: #404400 !important;
+    color: #e8e6e3 !important;
+}
+::-webkit-scrollbar {
+    background-color: #202324;
+    color: #aba499;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #454a4d;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #575e62;
+}
+::-webkit-scrollbar-thumb:active {
+    background-color: #484e51;
+}
+::-webkit-scrollbar-corner {
+    background-color: #181a1b;
+}
+::selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}
+::-moz-selection {
+    background-color: #004daa !important;
+    color: #e8e6e3 !important;
+}</style><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="darkreader" content="4b4d3c1fc0c04c079264f39043d1092b"><style class="darkreader darkreader--override" media="screen">.vimvixen-hint {
+    background-color: #7b5300 !important;
+    border-color: #d8b013 !important;
+    color: #f3e8c8 !important;
+}
+::placeholder {
+    opacity: 0.5 !important;
+}
+#edge-translate-panel-body,
+.MuiTypography-body1,
+.nfe-quote-text {
+    color: var(--darkreader-neutral-text) !important;
+}
+gr-main-header {
+    background-color: #0f3a48 !important;
+}
+.tou-z65h9k,
+.tou-mignzq,
+.tou-1b6i2ox,
+.tou-lnqlqk {
+    background-color: var(--darkreader-neutral-background) !important;
+}
+.tou-75mvi {
+    background-color: #032029 !important;
+}
+.tou-ta9e87,
+.tou-1w3fhi0,
+.tou-1b8t2us,
+.tou-py7lfi,
+.tou-1lpmd9d,
+.tou-1frrtv8,
+.tou-17ezmgn {
+    background-color: #0a0a0a !important;
+}
+.tou-uknfeu {
+    background-color: #231603 !important;
+}
+.tou-6i3zyv {
+    background-color: #19576c !important;
+}</style></head><body><div class="Parrafo">
+<p>Cifrar información es una tarea importante para mantener la seguridad de los datos. 
+Recientemente, se ha anunciado que el algoritmo 3DES en modo ECB tiene debilidades para sus llaves de 24 bytes, por lo que se deshabilitará su uso a partir de diciembre del presente año. 
+Incluso con una llave de esta longitud, al utilizar bloques de 8 bytes, es posible que se repita el contenido cifrado cuando se cifra el mismo string. 
+Por lo tanto, se recomienda utilizar otros algoritmos o modos de operación más seguros. 
+También se sabe, que a pesar de existir técnicas avanzadas para comunicar información, se comparten las contraseñas a través de medios públicos en donde se concatenan el primer carácter de cada oración para formar la contraseña final.
+Otras medidas de seguridad también ocultan información secreta dentro de estos mismos medios, a través del código fuente, con el fin de pasar desapercibidas.
+Cifrar información es una tarea importante para mantener la seguridad de los datos. 
+Recientemente, se ha anunciado que el algoritmo 3DES en modo ECB tiene debilidades para sus llaves de 24 bytes, por lo que se deshabilitará su uso a partir de diciembre del presente año. 
+Incluso con una llave de esta longitud, al utilizar bloques de 8 bytes, es posible que se repita el contenido cifrado cuando se cifra el mismo string. 
+Por lo tanto, se recomienda utilizar otros algoritmos o modos de operación más seguros. 
+También se sabe, que a pesar de existir técnicas avanzadas para comunicar información, se comparten las contraseñas a través de medios públicos en donde se concatenan el primer carácter de cada oración para formar la contraseña final.
+Otras medidas de seguridad también ocultan información secreta dentro de estos mismos medios, a través del código fuente, con el fin de pasar desapercibidas.
+Cifrar información es una tarea importante para mantener la seguridad de los datos. 
+Recientemente, se ha anunciado que el algoritmo 3DES en modo ECB tiene debilidades para sus llaves de 24 bytes, por lo que se deshabilitará su uso a partir de diciembre del presente año. 
+Incluso con una llave de esta longitud, al utilizar bloques de 8 bytes, es posible que se repita el contenido cifrado cuando se cifra el mismo string. 
+Por lo tanto, se recomienda utilizar otros algoritmos o modos de operación más seguros. 
+También se sabe, que a pesar de existir técnicas avanzadas para comunicar información, se comparten las contraseñas a través de medios públicos en donde se concatenan el primer carácter de cada oración para formar la contraseña final.
+Otras medidas de seguridad también ocultan información secreta dentro de estos mismos medios, a través del código fuente, con el fin de pasar desapercibidas.
+Cifrar información es una tarea importante para mantener la seguridad de los datos. 
+Recientemente, se ha anunciado que el algoritmo 3DES en modo ECB tiene debilidades para sus llaves de 24 bytes, por lo que se deshabilitará su uso a partir de diciembre del presente año. 
+Incluso con una llave de esta longitud, al utilizar bloques de 8 bytes, es posible que se repita el contenido cifrado cuando se cifra el mismo string. 
+Por lo tanto, se recomienda utilizar otros algoritmos o modos de operación más seguros. 
+También se sabe, que a pesar de existir técnicas avanzadas para comunicar información, se comparten las contraseñas a través de medios públicos en donde se concatenan el primer carácter de cada oración para formar la contraseña final.
+Otras medidas de seguridad también ocultan información secreta dentro de estos mismos medios, a través del código fuente, con el fin de pasar desapercibidas.</p>
+</div>
+<div class="M1" id="RQCKATIdEzg="> </div>
+<div class="M2" id="2szV3wHBiw5LfRIYX/q3tw=="> </div>
+<div class="M3" id="cEiLQFAioa5cKapKZGoxuA=="> </div>
+<div class="M4" id="BNrUoP7Pb04="> </div>
+<div class="M5" id="r1khDp/oaH4="> </div>
+<div class="M6" id="p8me9YrfrHs="> </div>
+<div class="M7" id="87L0P48K+KaE126XPkVh+Q=="> </div>
+
+
+<div id="promptbox_extension_root"></div></body></html>

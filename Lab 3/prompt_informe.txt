@@ -1,0 +1,528 @@
+Tengo las siguientes instrucciones de informe:
+Su informante quiere entregarle la contraseña de acceso a una red, pero desconfía de todo medio para entregársela (aún no llega al capítulo del curso en donde aprende a comunicar una password sin que nadie más la pueda interceptar).
+Por lo tanto, le entregará un archivo que contiene un desafío de autenticación, que al analizarlo, usted podrá obtener la contraseña que lo permite resolver.
+Como nadie puede ver a su informante (es informante y debe mantener el anonimato), él se comunicará con usted a través de la redes inalámbricas y de una forma que solo usted, como experto en informática y telecomunicaciones, logrará esclarecer.
+
+Paso1
+
+Identifique cual es la red inalámbrica que está utilizando su informante para enviarle información. Obtenga la contraseña de esa red utilizando el ataque por defecto de aircrack-ng, indicando el tiempo requerido para esto. Indique la explicación matemática de porqué solicita más de 5000 IVs para hacer el ataque.
+
+Selection_473-1.jpg
+
+Descifre el contenido transmitido sobre ella y descargue de Internet el archivo que su informante le ha comunicado a través de los paquetes que usted ha descifrado.
+
+Paso2
+
+Descargue el diccionario de RockyouLinks to an external site. (utilizado ampliamente en el mundo del pentesting). Haga un script que para cada string contenido en el diccionario, reemplace la primera letra por su letra en capital y agregue un cero al final de la password. 
+Todos los strings que no comiencen con una letra toca eliminarlos del diccionario. Indique la cantidad de contraseñas que contiene el diccionario modificado, el cual debe llamarse rockyou_mod.dic
+A continuación un ejemplo de cómo se modifican las 10 primeras líneas del diccionario original.
+
+Selection_471.jpg
+
+
+Paso3
+
+A partir del archivo que descargó de Internet, obtenga la password asociada a la generación de dicho archivo. Obtenga la llave mediante un ataque por fuerza bruta. 
+Para esto deberá utilizar tres herramientas distintas para lograr obtener la password del archivo: hashcatLinks to an external site., aircrack-ngLinks to an external site., pycrackLinks to an external site. . Esta última, permite entender paso a paso de qué forma se calcula la contraseña a partir de los valores contenidos en el handshake, por lo que deberá agregar dichos valores al código para obtener la password a partir de ellos y de rockyou_mod.dic. Antes de ejecutar esta herramienta deberá deshabilitar la función RunTest().
+Al calcular la password con hashcat utilice dos técnicas: una donde el resultado se guarda en el potfile y otra donde se deshabilita el potfile.
+Indique qué información retorna cada una de las 2 técnicas, identificando claramente cada campo.
+
+ 
+
+Recuerde guiarse por la rúbrica y utilizar el formato de informe cuyo código fuente está acáDownload acá
+
+Rúbrica
+lab3
+lab3
+Criterios	Calificaciones	Pts
+Este criterio depende de una competencia de aprendizajepaso1
+identificar en qué se destaca la red del informante del resto
+2 pts
+coloca evidencia que se logra
+0 pts
+no indica como lo obtuvo
+2 pts
+Este criterio depende de una competencia de aprendizajepaso1
+explica matemáticamente porqué se requieren más de 5000 paquetes para obtener la pass
+4 pts
+coloca evidencia que se logra
+0 pts
+no indica como lo obtuvo
+4 pts
+Este criterio depende de una competencia de aprendizajepaso1
+obtiene la password con ataque por defecto de aircrack-ng
+2 pts
+coloca evidencia que se logra
+0 pts
+no indica como lo obtuvo
+2 pts
+Este criterio depende de una competencia de aprendizajepaso1
+indica el tiempo que demoró en obtener la password
+2 pts
+coloca evidencia que se logra
+0 pts
+no indica como lo obtuvo
+2 pts
+Este criterio depende de una competencia de aprendizajepaso1
+descifra el contenido capturado
+4 pts
+coloca evidencia que se logra
+0 pts
+no indica como lo obtuvo
+4 pts
+Este criterio depende de una competencia de aprendizajepaso1
+obtiene la url de donde descargar el archivo
+4 pts
+coloca evidencia que se logra
+0 pts
+no indica como lo obtuvo
+4 pts
+Este criterio depende de una competencia de aprendizajepaso2
+indica script para modificar diccionario original
+4 pts
+coloca evidencia que se logra
+0 pts
+no indica como lo obtuvo
+4 pts
+Este criterio depende de una competencia de aprendizajepaso2
+indica cantidad de passwords finales que contiene rockyou_mod.dic
+4 pts
+coloca evidencia que se logra
+0 pts
+no indica como lo obtuvo
+4 pts
+Este criterio depende de una competencia de aprendizajepaso3
+obtiene contraseña con hashcat con potfile
+2 pts
+coloca evidencia que se logra
+0 pts
+no indica como lo obtuvo
+2 pts
+Este criterio depende de una competencia de aprendizajepaso3
+identifica nomenclatura del output
+4 pts
+coloca evidencia que se logra
+0 pts
+no indica como lo obtuvo
+4 pts
+Este criterio depende de una competencia de aprendizajepaso3
+obtiene contraseña con hashcat sin potfile
+2 pts
+coloca evidencia que se logra
+0 pts
+no indica como lo obtuvo
+2 pts
+Este criterio depende de una competencia de aprendizajepaso3
+identifica nomenclatura del output
+4 pts
+coloca evidencia que se logra
+0 pts
+no indica como lo obtuvo
+4 pts
+Este criterio depende de una competencia de aprendizajepaso3
+obtiene contraseña con aircrack-ng
+4 pts
+coloca evidencia que se logra
+0 pts
+no indica como lo obtuvo
+4 pts
+Este criterio depende de una competencia de aprendizajepaso3
+identifica y modifica parámetros solicitados por pycrack
+12 pts
+coloca evidencia que se logra
+0 pts
+no indica como lo obtuvo
+12 pts
+Este criterio depende de una competencia de aprendizajepaso3
+obtiene contraseña con pycrack
+6 pts
+coloca evidencia que se logra
+0 pts
+no indica como lo obtuvo
+6 pts
+Puntos totales: 60
+Mis apuntes al realizar el lab:
+BSSID
+
+```jsx
+B0:48:7A:D2:DD:74
+```
+
+Crackear por default de Aircrack-ng
+
+```jsx
+sudo aircrack-ng -b <BSSID> -w <diccionario> capture*.cap
+```
+
+mi caso:
+
+```jsx
+sudo aircrack-ng -b <BSSID> -w <diccionario> capture*.cap
+```
+
+Resultado:
+
+```jsx
+sudo aircrack-ng -b B0:48:7A:D2:DD:74 archivo_tcpdump.pcap
+
+Place your finger on the fingerprint reader
+Reading packets, please wait...
+Opening archivo_tcpdump.pcap
+Read 123463 packets.
+
+1 potential targets
+
+Attack will be restarted every 5000 captured ivs.
+Starting PTW attack with 30954 ivs.
+                         KEY FOUND! [ 12:34:56:78:90 ] 
+	Decrypted correctly: 100%
+```
+
+```jsx
+12:34:56:78:90
+```
+
+ascii, hex, base64
+
+tips profe: cambio de base → cambio de idioma
+
+Profe: 
+
+La captura esta cifrada en wep, luego uso la key para descifrarla. 
+
+En la captura descifrada, veo el payload de los paquetes ICMP y hago cambio de base. con esto voy a obtener una URL
+
+Con esta URL descargo un archivo cifrado en WPA2 el cual debo crackear.
+
+## Descifrar captura y obtener URL
+
+Usar airdecap para descrifrar y obtener otro pcap
+
+```jsx
+airdecap-ng -b BSSID -w WPA_KEY capture_file.cap
+```
+
+```jsx
+airdecap-ng -e B0:48:7A:D2:DD:74 -p 12:34:56:78:90 archivo_tcpdump.pcap
+```
+
+### Cadena obtenida:
+
+```jsx
+Yml0Lmx5L3dwYTJf
+```
+
+### Cadena descifrada
+
+```jsx
+bit.ly/wpa2_
+```
+
+# Hashcat
+
+Se descarga hashcat:
+
+[https://github.com/hashcat/hashcat](https://github.com/hashcat/hashcat)
+
+Y también hashcat-utils:
+
+[https://github.com/hashcat/hashcat-utils](https://github.com/hashcat/hashcat-utils)
+
+## Convertir .pcap
+
+```jsx
+./cap2hccapx.bin handshake.pcap handshake.hccapx
+```
+
+Con mis rutas:
+
+Primero permisos
+
+```jsx
+chmod +x "/home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/hashcat/hashcat-utils-1.9/bin/cap2hccapx.bin"
+```
+
+Luego conversión:
+
+```jsx
+"/home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/hashcat/hashcat-utils-1.9/bin/cap2hccapx.bin" "/home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/handshake.pcap" "/home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/handshake.hccapx"
+```
+
+## Crackear con hashcat
+
+```jsx
+hashcat -m 2500 -a 0 handshake.hccapx dictionary.txt
+```
+
+Donde:
+
+- **`m 2500`** especifica que estás crackeando WPA/WPA2.
+- **`a 0`** especifica que estás haciendo un ataque de diccionario.
+- **`handshake.hccapx`** es el archivo que contiene la captura del handshake.
+- **`dictionary.txt`** es el archivo del diccionario que estás usando para el ataque.
+
+Por supuesto, deberías reemplazar **`dictionary.txt`** con el archivo de diccionario que estés usando. Si prefieres usar un ataque de fuerza bruta o de máscara, puedes hacerlo cambiando el tipo de ataque y proporcionando los parámetros apropiados.
+
+### Mi caso:
+
+Con potfile por defecto:
+
+```jsx
+"/home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/hashcat/hashcat-6.2.6/hashcat.bin" -m 22000 -a 0 "/home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/handshake.hc22000" "/home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/script_rockyou/rockyou_mod.dic"
+```
+
+error, ahora es 22000
+
+### Resultado
+
+```jsx
+hashcat (v6.2.6) starting
+
+OpenCL API (OpenCL 3.0 ) - Platform #1 [Intel(R) Corporation]
+=============================================================
+* Device #1: Intel(R) HD Graphics 620 [0x5916], 3040/6170 MB (1542 MB allocatable), 24MCU
+
+Minimum password length supported by kernel: 8
+Maximum password length supported by kernel: 63
+
+Counting lines in /home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/handshake.hc22000. Please be Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Optimizers applied:
+* Zero-Byte
+* Single-Hash
+* Single-Salt
+* Slow-Hash-SIMD-LOOP
+
+Watchdog: Hardware monitoring interface not found on your system.
+Watchdog: Temperature abort trigger disabled.
+
+Host memory required for this attack: 836 MB
+
+Dictionary cache building /home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/script_rockyou/rockyoDictionary cache building /home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/script_rockyou/rockyoDictionary cache built:
+* Filename..: /home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/script_rockyou/rockyou_mod.dic
+* Passwords.: 10957144
+* Bytes.....: 118583250
+* Keyspace..: 10957144
+* Runtime...: 1 sec
+
+1813acb976741b446d43369fb96dbf90:b0487ad2dc18:eede678cdf8b:VTR-1645213:Security0
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 22000 (WPA-PBKDF2-PMKID+EAPOL)
+Hash.Target......: /home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/handshake.hc22000
+Time.Started.....: Fri May 12 17:35:53 2023 (1 sec)
+Time.Estimated...: Fri May 12 17:35:54 2023 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File (/home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/script_rockyou/rockyou_mod.dic)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:     6699 H/s (6.69ms) @ Accel:2 Loops:32 Thr:128 Vec:1
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 10526/10957144 (0.10%)
+Rejected.........: 4382/10526 (41.63%)
+Restore.Point....: 0/10957144 (0.00%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1
+Candidate.Engine.: Device Generator
+Candidates.#1....: Password0 -> Allmylife0
+
+Started: Fri May 12 17:35:16 2023
+Stopped: Fri May 12 17:35:56 2023
+```
+
+Potfile disable:
+
+```jsx
+"/home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/hashcat/hashcat-6.2.6/hashcat.bin" -m 22000 -a 0 "/home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/handshake.hc22000" "/home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/script_rockyou/rockyou_mod.dic" --potfile-disable
+```
+
+### Resultado
+
+```jsx
+hashcat (v6.2.6) starting
+
+OpenCL API (OpenCL 3.0 ) - Platform #1 [Intel(R) Corporation]
+=============================================================
+* Device #1: Intel(R) HD Graphics 620 [0x5916], 3040/6170 MB (1542 MB allocatable), 24MCU
+
+Minimum password length supported by kernel: 8
+Maximum password length supported by kernel: 63
+
+Counting lines in /home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab Counted lines in /home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3Hashes: 1 digests; 1 unique digests, 1 unique salts
+Bitmaps: 16 bits, 65536 entries, 0x0000ffff mask, 262144 bytes, 5/13 rotates
+Rules: 1
+
+Optimizers applied:
+* Zero-Byte
+* Single-Hash
+* Single-Salt
+* Slow-Hash-SIMD-LOOP
+
+Watchdog: Hardware monitoring interface not found on your system.
+Watchdog: Temperature abort trigger disabled.
+
+Host memory required for this attack: 836 MB
+
+Dictionary cache hit:
+* Filename..: /home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/script_rockyou/rockyou_mod.dic
+* Passwords.: 10957144
+* Bytes.....: 118583250
+* Keyspace..: 10957144
+
+1813acb976741b446d43369fb96dbf90:b0487ad2dc18:eede678cdf8b:VTR-1645213:Security0
+                                                          
+Session..........: hashcat
+Status...........: Cracked
+Hash.Mode........: 22000 (WPA-PBKDF2-PMKID+EAPOL)
+Hash.Target......: /home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/handshake.hc22000
+Time.Started.....: Fri May 12 17:42:35 2023 (1 sec)
+Time.Estimated...: Fri May 12 17:42:36 2023 (0 secs)
+Kernel.Feature...: Pure Kernel
+Guess.Base.......: File (/home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/script_rockyou/rockyou_mod.dic)
+Guess.Queue......: 1/1 (100.00%)
+Speed.#1.........:     6699 H/s (6.70ms) @ Accel:2 Loops:32 Thr:128 Vec:1
+Recovered........: 1/1 (100.00%) Digests (total), 1/1 (100.00%) Digests (new)
+Progress.........: 10526/10957144 (0.10%)
+Rejected.........: 4382/10526 (41.63%)
+Restore.Point....: 0/10957144 (0.00%)
+Restore.Sub.#1...: Salt:0 Amplifier:0-1 Iteration:0-1
+Candidate.Engine.: Device Generator
+Candidates.#1....: Password0 -> Allmylife0
+
+Started: Fri May 12 17:42:28 2023
+Stopped: Fri May 12 17:42:37 2023
+```
+
+password
+
+```jsx
+Allmylife0
+```
+
+# Aircrack-ng wpa2
+
+Comando:
+
+```jsx
+aircrack-ng -w "/home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/script_rockyou/rockyou_mod.dic" "/home/seba/Desktop/Estudio/Criptorafía y seguridad en redes/Laboratorios/Lab 3/handshake.pcap"
+```
+
+# pycrack
+
+Datos
+
+```jsx
+aNonce: 4c2fb7eca28fba45accefde3ac5e433314270e04355b6d95086031b004a31935
+sNonce: 30bde6b043c2aff8ea482dee7d788e95b634e3f8e3d73c038f5869b96bbe9cdc
+apMAC: b0:48:7a:d2:dc:18
+cliMAC: ee:de:67:8c:df:8b
+mic1: 1813acb976741b446d43369fb96dbf90
+mic2: a349d01089960aa9f94b5857b0ea10c6
+mic3: 5cf0d63af458f13a83daa686df1f4067
+data1: 0103007502010a0000000000000000000130bde6b043c2aff8ea482dee7d788e95b634e3f8e3d73c038f5869b96bbe9cdc00000000000000000000000000000000000000000000000000000000000000001813acb976741b446d43369fb96dbf90001630140100000fac040100000fac040100000fac020000
+data2: 020300970213ca001000000000000000024c2fb7eca28fba45accefde3ac5e433314270e04355b6d95086031b004a3193500000000000000000000000000000000cd000000000000000000000000000000a349d01089960aa9f94b5857b0ea10c60038db0eb43c3faf2c0e8b7e8a471f962c307e707e4718be724459167a88fa281f4d7ce38f012943da788d0a7159c9fac6ad71483d788cecf18b
+data3: 0103005f02030a00000000000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005cf0d63af458f13a83daa686df1f40670000
+ssid: VTR-1645213
+
+```
+y Debo hacer el informe en el siguiente latex, quiero que lo hagas por mi: \documentclass[letter,12pt]{article}
+\usepackage[paperheight=27.94cm,paperwidth=21.59cm,bindingoffset=0in,left=3cm,right=2.0cm, top=3.5cm,bottom=2.5cm, headheight=200pt, headsep=1.0\baselineskip]{geometry}
+\usepackage{graphicx,lastpage}
+\usepackage{upgreek}
+\usepackage{censor}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{pdfpages}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{adjustbox}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{hyperref}
+
+\renewcommand{\tablename}{Tabla}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+
+%
+\begin{document}
+%
+   \title{\Huge{Informe Laboratorio 3}}
+
+   \author{\textbf{Sección x} \\  \\Alumno x \\ e-mail: alumno.contacto@mail.udp.cl}
+          
+   \date{Mayo de 2023}
+
+   \maketitle
+   
+   \tableofcontents
+ 
+  \newpage
+  
+
+\section{Descripción de actividades}
+Su informante quiere entregarle la contraseña de acceso a una red, pero desconfía de todo medio para entregársela (aún no llega al capítulo del curso en donde aprende a comunicar una password sin que nadie más la pueda interceptar).
+Por lo tanto, le entregará un archivo que contiene un desafío de autenticación, que al analizarlo, usted podrá obtener la contraseña que lo permite resolver.
+Como nadie puede ver a su informante (es informante y debe mantener el anonimato), él se comunicará con usted a través de la redes inalámbricas y de una forma que solo usted, como experto en informática y telecomunicaciones, logrará esclarecer.
+
+\begin{enumerate}
+    \item Identifique cual es la red inalámbrica que está utilizando su informante para enviarle información. Obtenga la contraseña de esa red utilizando el ataque por defecto de aircrack-ng, indicando el tiempo requerido para esto. Descifre el contenido transmitido sobre ella y descargue de Internet el archivo que su informante le ha comunicado a través de los paquetes que usted ha descifrado.
+    
+    \item Descargue el diccionario de RockyouLinks to an external site. (utilizado ampliamente en el mundo del pentesting). Haga un script que para cada string contenido en el diccionario, reemplace la primera letra por su letra en capital y agregue un cero al final de la password. 
+    
+    \item Todos los strings que comiencen con número toca eliminarlos del diccionario. Indique la cantidad de contraseñas que contiene el diccionario modificado debe llamarse rockyou\_mod.dic
+    A continuación un ejemplo de cómo se modifican las 10 primeras líneas del diccionario original.
+
+\end{enumerate}
+
+\section{Desarrollo (PASO 1)}
+
+\subsection{identificar en qué se destaca la red del informante del resto}
+
+\subsection{explica matemáticamente porqué se requieren más de 5000 paquetes para obtener la pass}
+
+\subsection{obtiene la password con ataque por defecto de aircrack-ng}
+
+
+\subsection{indica el tiempo que demoró en obtener la password}
+
+\subsection{descifra el contenido capturado}
+
+\subsection{describe como obtiene la url de donde descargar el archivo}
+
+
+\section{Desarrollo (PASO 2)}
+
+\subsection{indica script para modificar diccionario original}
+
+\subsection{cantidad de passwords finales que contiene rockyou\_mod.dic}
+
+\section{Desarrollo (Paso 3)}
+
+\subsection{obtiene contraseña con hashcat con potfile}
+
+\subsection{identifica nomenclatura del output}
+
+\subsection{obtiene contraseña con hashcat sin potfile}
+
+\subsection{identifica nomenclatura del output}
+
+\subsection{obtiene contraseña con aircrack-ng}
+
+\subsection{identifica y modifica parámetros solicitados por pycrack}
+
+\subsection{obtiene contraseña con pycrack}
+
+% Please add the following required packages to your document preamble:
+%\begin{table}[htbp]
+
+\section*{Conclusiones y comentarios}
+
+\end{document}
+
+
