@@ -1,41 +1,82 @@
 #!/bin/bash
-set -x
+set -x  # Imprime cada comando antes de ejecutarlo
 
-# Stop all running containers
+# Crea el directorio "capturas" si no existe
+mkdir -p capturas
+
+# Detiene todos los contenedores en ejecución
 docker stop $(docker ps -aq)
 
-# Remove all containers
+# Elimina todos los contenedores
 docker rm $(docker ps -aq)
 
-# Remove all images
+# Elimina todas las imágenes
 docker rmi $(docker images -q)
 
-# Remove all networks
+# Elimina todas las redes
 docker network rm $(docker network ls -q)
 
-# Navigate to the s1 directory and build the image
+# Navega al directorio s1 y construye la imagen
 cd s1
 docker build -t my_image_s1 .
 
 cd ..
 
-# Navigate to the c1 directory and build the image
-cd c1
-docker build -t my_custom_image_c1 .
-
-# Create a network
+# Crea una red
 docker network create mynetwork
 
-# Run the s1 container in the background
+# Ejecuta el contenedor s1 en segundo plano
 docker run --network=mynetwork -d --name s1 my_image_s1
 
-# Wait for a while to allow the s1 container to fully start
+# Obtiene la dirección IP del contenedor s1
+s1_ip=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' s1)
+
+# Array de clientes
+clients=("c1" "c2" "c3")
+
+# Itera sobre cada cliente en el array
+for client in ${clients[@]}; do
+  # Navega al directorio del cliente y construye la imagen
+  cd $client
+  docker build -t my_custom_${client} .
+  cd ..
+
+  # Ejecuta el contenedor del cliente
+  docker run --network=mynetwork -d -it --name $client my_custom_${client}
+
+  # Espera 10 segundos
+  sleep 10
+
+  # Inicia tcpdump en el contenedor del cliente
+  docker exec -d $client /bin/bash -c 'tcpdump -U -i any -w ./capture.pcap >/dev/null 2>&1 &'
+
+  # Espera 10 segundos
+  sleep 10
+
+  # Realiza una conexión SSH al contenedor del cliente
+  docker exec -it $client /bin/bash -c "sshpass -p 'test' ssh test@$s1_ip"
+
+  # Espera unos segundos para asegurar que tcpdump termina de capturar
+  sleep 10
+
+  # Copia el archivo capture.pcap del contenedor del cliente al directorio capturas en el host
+  timeout 10 docker cp ${client}:./capture.pcap ./capturas/captura_${client}.pcap
+done
+
+# Espera 10 segundos
 sleep 10
 
-# Get the IP address of the s1 container
-s1_ip=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' s1)
+# Inicia tcpdump en el contenedor s1
+docker exec -d s1 /bin/bash -c 'tcpdump -U -i any -w ./capture.pcap >/dev/null 2>&1 &'
 
-# Run the c1 container in the background with elevated privileges, pass s1_ip as an argument to ssh-script.sh, wait for 20 seconds, then stop it
-timeout 60 docker run --network=mynetwork --privileged -v "$(pwd)/captures:/captures" --name c1 my_custom_image_c1 /ssh-script.sh $s1_ip
+# Espera 10 segundos
+sleep 10
 
-# The script ends here
+# Realiza una conexión SSH al propio contenedor s1
+docker exec -it s1 /bin/bash -c "sshpass -p 'test' ssh test@localhost"
+
+# Espera unos segundos para asegurar que tcpdump termina de capturar
+sleep 10
+
+# Copia el archivo capture.pcap del contenedor s1 al directorio capturas en el host
+timeout 10 docker cp s1:./capture.pcap ./capturas/captura_s1.pcap
