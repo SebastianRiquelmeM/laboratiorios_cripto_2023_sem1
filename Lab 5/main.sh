@@ -80,3 +80,4 @@ sleep 10
 
 # Copia el archivo capture.pcap del contenedor s1 al directorio capturas en el host
 timeout 10 docker cp s1:./capture.pcap ./capturas/captura_s1.pcap
+  

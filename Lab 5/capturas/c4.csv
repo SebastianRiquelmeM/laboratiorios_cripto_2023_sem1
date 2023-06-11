@@ -1,0 +1,7 @@
+"No.","Time","Source","Destination","Protocol","Length","Info"
+"4","0.000488","127.0.0.1","127.0.0.1","SSHv2","109","Client: Protocol (SSH-2.0-OpenSSH_8.3p1 Ubuntu-1ubuntu0.1)"
+"6","0.007081","127.0.0.1","127.0.0.1","SSHv2","109","Server: Protocol (SSH-2.0-OpenSSH_8.3p1 Ubuntu-1ubuntu0.1)"
+"8","0.007251","127.0.0.1","127.0.0.1","SSHv2","1580","Client: Key Exchange Init"
+"9","0.008095","127.0.0.1","127.0.0.1","SSHv2","1124","Server: Key Exchange Init"
+"10","0.009576","127.0.0.1","127.0.0.1","SSHv2","116","Client: Elliptic Curve Diffie-Hellman Key Exchange Init"
+"11","0.013091","127.0.0.1","127.0.0.1","SSHv2","576","Server: Elliptic Curve Diffie-Hellman Key Exchange Reply, New Keys"
